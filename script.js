@@ -1,10 +1,10 @@
 document.addEventListener('DOMContentLoaded',function () {
   let container = document.querySelector('#container ul'),
+      pass_input = document.querySelector('.pass-output'),
+      password = [1,2,3,4,5,6],
       list_numbers = [],
       valid_password = true,
       validador = '';
-      password = [1,2,3,4,5,6],
-      counter = 0;
 
   function generateRandomArray() {
     let ramdom_number = Math.floor(Math.random() * 10);
@@ -19,7 +19,8 @@ document.addEventListener('DOMContentLoaded',function () {
   }
 
   function handleOutputPassword(){
-    var control_number = -1;
+    let control_number = -1;
+
     for (let i = 0; i < 10; i+=2) {
       let li = document.createElement('li');
 
@@ -39,29 +40,23 @@ document.addEventListener('DOMContentLoaded',function () {
   function valid(array_pass){
     valid_password = true;
 
-    if(counter < password.length){
-      for (let i = counter; i < password.length; i++) {
-        if(valid_password) {
-          for (let idxArray = 0; idxArray < array_pass.length; idxArray++) {
-
-            if(array_pass[idxArray] == password[i] && validador.indexOf(array_pass[idxArray]) < 0) {
-              validador += array_pass[idxArray];
-              counter += 1;
-              valid_password = true;
-              return
-            }else {
-              valid_password = false;
-            }
+    for (let i = validador.length; i < password.length; i+= 2) {
+      if(valid_password) {
+        for (let idxArray = 0; idxArray < array_pass.length; idxArray++) {
+          if(array_pass[idxArray] == password[i] && validador.indexOf(array_pass[idxArray]) < 0) {
+            validador += array_pass[idxArray];
+            pass_input.value = validador;
+            valid_password = true;
+            return
+          }else {
+            valid_password = false;
           }
-          counter += 1;
-        }else {
-          return
         }
+        validador += '0'
+        pass_input.value = validador;
       }
-    }else{
-      let confirm_pass = password.toString().replace(/\,/g,'');
-      confirm_pass === validador ? console.log('Senha Correta') : console.log('Senha inválida');
     }
+    
   }
   function verifyingPassword() {
     let array_pass = [];
@@ -74,12 +69,19 @@ document.addEventListener('DOMContentLoaded',function () {
         valid(array_pass)
         console.log(validador)
         array_pass= [];
-        
       })
     })
-    
   }
   generateRandomArray();
   handleOutputPassword();
   verifyingPassword();
+
+  document.querySelector('.confirm-pass').addEventListener('click',function(e){
+    e.preventDefault();
+    if(validador == password.toString().replace(/\,/g,'')) {
+      alertify.success('Senha Correta!');
+    }else {
+      alertify.error('Senha Incorreta!');
+    }
+  })
 })

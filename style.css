@@ -7,5 +7,69 @@ html {
   font-size: 62.5%;
 }
 body {
+  font: 500 1.6rem 'Roboto', sans-serif;
+  /* /background: #a77bf3; */
+}
+ul li {
+  list-style: none;
+}
+button {
+  padding: 2rem;
+  border: none;
+  cursor: pointer;
+  margin: 1.6rem;
+  font: 500 1.6rem 'Roboto', sans-serif;
+  transition: .3s;
+  border-radius: 1rem;
+  color: #FFF;
+  background: #484f58;
+}
+button:hover {
+  background: #333;
+  color: #FFF;
+}
+
+input {
   font: 400 1.6rem 'Roboto', sans-serif;
+  border-radius: 3%;
+  background: #DFDFDF;  
+}
+
+input:focus {
+  outline: none;
+}
+
+h1 {
+  text-align: center;
+}
+main {
+  display: block;
+  margin-top: 4rem;
+}
+
+.display-flex {
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+}
+main #container {
+
+}
+main #container ul {
+  flex-wrap: wrap;
+}
+
+main .main-form {
+  margin-top: 4rem;
+  display: block;
+  text-align: center;
+}
+main .main-form input{
+  font-size: 1.6rem;
+  padding: 1rem 0.6rem 0.4rem;
+  border: none;
+  text-align: center;
+}
+.alertify-notifier {
+  top:  2rem;
 }
