@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded',function () {
   let container = document.querySelector('#container ul'),
       pass_input = document.querySelector('.pass-output'),
-      password = [1,2,3,4,5,6],
+      password = [1,2,3,4,5,6],//Não pode números repetidos, questão de segurança.
       list_numbers = [],
       valid_password = true,
       validador = '';
